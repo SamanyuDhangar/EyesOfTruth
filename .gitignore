@@ -1,0 +1,27 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python environments and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Backups
+*.bak
+*.backup
+*.task*-backup*
+*.before_terms_integration.bak
+
+# Private test emails and logs
+*.eml
+*.log
+
+# Editor settings
+.vscode/
+.idea/
+
+# Exclude backup files
+*backup*
