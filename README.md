@@ -1,41 +1,174 @@
-# Eyes of Truth
+# 👁️ EyesOfTruth
 
-**A Python-based cybersecurity tool for email phishing analysis, suspicious URL checks, domain intelligence, and terms-of-service summarization.**
+**EyesOfTruth** is a beginner-friendly cybersecurity tool designed to help users identify potential phishing threats, analyze suspicious URLs, and understand complex terms and conditions through simplified summaries.
 
-Eyes of Truth is an educational project designed to help users investigate suspicious emails and links and review lengthy policy documents through a simple terminal interface.
+Built with Python, this project combines practical security checks with accessible, terminal-based workflows to make cybersecurity analysis easier to understand and use.
 
-## Features
+### ✨ What It Does
 
-### 1. Email Phishing Scanner
-Analyze pasted email content or a saved `.eml` email file for suspicious patterns and potential phishing indicators.
+- **Email Phishing Scanner:** Examines email content for suspicious indicators that may suggest phishing.
+- **URL Analyzer:** Checks URLs for potential warning signs and supports threat-intelligence lookups where configured.
+- **Terms Summarizer:** Simplifies lengthy terms and conditions to help users identify important clauses and potential concerns.
 
-### 2. Link Analyzer
-Examine URLs using local heuristic checks and, when configured, an optional URLhaus threat-intelligence lookup.
+### 🎯 Project Goal
 
-### 3. Terms Summarizer
-Summarize text from terms of service and privacy policies, identify relevant topics, and flag clauses that may deserve closer review.
+The goal of EyesOfTruth is to make basic cybersecurity analysis more accessible while providing a practical learning project for exploring Python, security automation, and threat detection.
 
-### 4. Domain Intelligence
-Review available domain-registration information and possible brand-name similarities.
+### ⚠️ Disclaimer
 
-## Requirements
+EyesOfTruth is an educational security tool, not a guarantee of safety. Its findings may be incomplete or inaccurate. Always verify important results independently and use it only for lawful, authorized purposes.
+
+---
+
+## Installation and Setup
+
+EyesOfTruth runs locally using Python. Follow the instructions for your operating system.
+
+### Requirements
 
 - Python 3.10 or newer
-- Git, if installing by cloning the repository
-- Internet connection for optional online lookups
-- API keys only for online providers that require them
+- Git
+- An internet connection for optional online threat-intelligence lookups
+- API keys only for providers you choose to configure
 
-## Installation
+### 1. Kali Linux / Debian / Ubuntu
 
-### Option A: Kali Linux or Ubuntu
+**Step 1 — Open Terminal**
 
-**Step 1 — Install system prerequisites**
-
-Open a terminal and run:
+**Step 2 — Install the required packages**
 
 ```bash
 sudo apt update
 sudo apt install -y git python3 python3-venv python3-pip
+```
+
+**Step 3 — Download EyesOfTruth**
+
+```bash
+git clone https://github.com/SamanyuDhangar/EyesOfTruth.git
+cd EyesOfTruth
+```
+
+**Step 4 — Create a virtual environment**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**Step 5 — Install dependencies**
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+**Step 6 — Start EyesOfTruth**
+
+```bash
+python main.py
+```
+
+### 2. Windows — PowerShell
+
+**Step 1 — Install prerequisites**
+
+Install Python 3.10 or newer and Git for Windows. During Python installation, enable the option to add Python to PATH if available.
+
+Open PowerShell and verify the installations:
+
+```powershell
+py --version
+git --version
+```
+
+**Step 2 — Download the project**
+
+```powershell
+git clone https://github.com/SamanyuDhangar/EyesOfTruth.git
+cd EyesOfTruth
+```
+
+**Step 3 — Create a virtual environment**
+
+```powershell
+py -m venv .venv
+```
+
+**Step 4 — Install dependencies**
+
+These commands use the virtual environment directly, so activating it is not required.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+**Step 5 — Start EyesOfTruth**
+
+```powershell
+.\.venv\Scripts\python.exe main.py
+```
+
+**Optional — Activate the environment**
+
+If you prefer to activate it first:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python main.py
+```
+
+If PowerShell blocks script activation, use the direct Python commands above instead. Alternatively, use Command Prompt as described below.
+
+### 3. Windows — Command Prompt (CMD)
+
+**Step 1 — Open Command Prompt**
+
+Verify Python and Git:
+
+```bat
+py --version
+git --version
+```
+
+**Step 2 — Download the project**
+
+```bat
+git clone https://github.com/SamanyuDhangar/EyesOfTruth.git
+cd EyesOfTruth
+```
+
+**Step 3 — Create a virtual environment**
+
+```bat
+py -m venv .venv
+```
+
+**Step 4 — Install dependencies**
+
+```bat
+.venv\Scripts\python.exe -m pip install --upgrade pip
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+**Step 5 — Start EyesOfTruth**
+
+```bat
+.venv\Scripts\python.exe main.py
+```
+
+### 4. macOS
+
+**Step 1 — Install prerequisites**
+
+Install Python 3.10 or newer and Git. You can obtain Python from [python.org](https://www.python.org/downloads/macos/). If Git is not installed, macOS may offer to install its command-line developer tools when you run `git`.
+
+Open Terminal and verify:
+
+```bash
+python3 --version
+git --version
 ```
 
 **Step 2 — Download the project**
@@ -45,82 +178,98 @@ git clone https://github.com/SamanyuDhangar/EyesOfTruth.git
 cd EyesOfTruth
 ```
 
-**Step 3 — Create a virtual environment**
+**Step 3 — Create and activate a virtual environment**
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-When activated, your terminal should display `(.venv)` or a similar environment indicator.
-
-**Step 4 — Install Python dependencies**
+**Step 4 — Install dependencies**
 
 ```bash
+python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-Wait for the installation to finish before continuing.
+**Step 5 — Start EyesOfTruth**
 
-### Option B: Windows
-
-Install Python 3.10 or newer and Git first.
-
-Open PowerShell and run:
-
-```powershell
-git clone https://github.com/SamanyuDhangar/EyesOfTruth.git
-cd EyesOfTruth
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+```bash
+python main.py
 ```
 
-If PowerShell blocks environment activation, use Command Prompt and activate with:
+## How to Use EyesOfTruth
 
-```bat
-.venv\Scripts\activate.bat
-```
+After installation, run the appropriate startup command for your operating system. The application opens an interactive menu in the terminal.
 
-Then continue to the configuration section.
+### Feature 1 — Email Phishing Scanner
 
-## Configuration
+1. Select the email phishing scanner from the displayed menu.
+2. Follow the on-screen prompts to provide email content or the path to a saved `.eml` file.
+3. Review the suspicious indicators and analysis returned by the tool.
+4. Use the findings as a starting point for further investigation.
 
-### Optional API keys
+**Safety tip:** Use sample emails or authorized test messages. Do not share confidential email contents or credentials.
 
-Some online intelligence providers may require API keys.
+### Feature 2 — Link Analyzer
 
-Copy the example configuration file:
+1. Select the link analyzer from the menu.
+2. Enter the URL when prompted.
+3. Review the local heuristic checks and any available online threat-intelligence results.
+4. Treat the result as an initial assessment, not a guarantee that the URL is safe.
 
-**Kali Linux / Ubuntu:**
+Do not open a suspicious URL simply to test it.
+
+### Feature 3 — Terms Summarizer
+
+1. Select the terms summarizer from the menu.
+2. Follow the prompts to provide the policy or terms text.
+3. Review the summary, identified topics, and clauses flagged for closer inspection.
+
+The summarizer uses rule-based processing. It does not replace legal advice or a complete review of the original document.
+
+### Exit the application
+
+Choose the exit option shown in the menu. If you need to stop the application immediately, press `Ctrl+C` in the terminal.
+
+## Configuration — Optional API Keys
+
+Some online threat-intelligence providers may require API keys. Local analysis features may work without them, depending on the provider configuration.
+
+### Kali Linux / Ubuntu / macOS
+
+From the project directory:
 
 ```bash
 cp .env.example .env
 nano .env
 ```
 
-**Windows PowerShell:**
+Save your changes in Nano with `Ctrl+O`, press Enter, and exit with `Ctrl+X`.
+
+### Windows PowerShell
 
 ```powershell
 Copy-Item .env.example .env
 notepad .env
 ```
 
-Add the  API keys only if you intend to use their associated providers:
+### Windows Command Prompt
 
-- `URLHAUS_AUTH_KEY`
+```bat
+copy .env.example .env
+notepad .env
+```
 
-Use the exact variable names already provided in `.env.example`. Follow each provider's current instructions for obtaining and using a key. Leave unused settings blank if supported by the provider implementation.
+Use the exact environment variable names provided in `.env.example`. Configure only the providers you intend to use.
 
-Save the file and close the editor.
+**Never upload your `.env` file, API keys, passwords, or private email content to GitHub.** Keep credentials private.
 
-**Security warning:** Never commit `.env`, API keys, passwords, or private email content to GitHub. The repository's `.gitignore` is intended to exclude sensitive local files.
+## Running EyesOfTruth Again
 
-## Running Eyes of Truth
+You do not need to clone the repository or reinstall dependencies every time.
 
-Activate your virtual environment if it is not already active.
-
-On Kali Linux or Ubuntu:
+### Kali Linux / Ubuntu / macOS
 
 ```bash
 cd EyesOfTruth
@@ -128,70 +277,71 @@ source .venv/bin/activate
 python main.py
 ```
 
-On Windows, activate the environment using the appropriate command above, then run:
+### Windows PowerShell
 
 ```powershell
-python main.py
+cd EyesOfTruth
+.\.venv\Scripts\python.exe main.py
 ```
 
-Follow the numbered menu displayed in the terminal:
+### Windows Command Prompt
 
-1. **Email Phishing Scanner** — inspect email content or an email file.
-2. **Link Analyzer** — examine a URL using available local checks and optional online intelligence.
-3. **Terms Summarizer** — summarize policy text and review flagged clauses.
-4. **Exit** — close the program.
+```bat
+cd EyesOfTruth
+.venv\Scripts\python.exe main.py
+```
 
-Follow any additional prompts shown by the selected feature.
+If you open a new terminal, make sure you navigate to the project directory first. If your project is stored elsewhere, use its actual directory path.
 
-## Running the tests
+## Running Tests
 
-From the project directory, with your virtual environment activated, run:
+Run these commands from the project directory.
+
+### Kali Linux / Ubuntu / macOS
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-The test suite currently includes URL-scanner checks. A successful run ends with `OK`.
-
-You can also check Python syntax with:
+If the virtual environment is not active, activate it first:
 
 ```bash
-python -m py_compile main.py core/*.py providers/*.py
+source .venv/bin/activate
 ```
 
-No output usually means the syntax check succeeded.
+### Windows PowerShell
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+### Windows Command Prompt
+
+```bat
+.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+A successful test run normally ends with `OK`. If a test fails, read the error output to identify the issue.
 
 ## Troubleshooting
 
-- **`ModuleNotFoundError`:** Activate `.venv` and run `python -m pip install -r requirements.txt` again.
-- **Virtual environment creation fails:** On Debian-based Linux, install `python3-venv` using `apt`.
-- **Online lookup fails:** Check your internet connection, provider requirements, API-key configuration, and any rate limits.
-- **Command not found:** Confirm that Python and Git are installed and available in your terminal.
-- **Permission or package-installation errors:** Install dependencies inside the virtual environment rather than modifying system Python packages.
+- **`git` is not recognized:** Install Git and reopen your terminal.
+- **`python` or `python3` is not found:** Install Python 3.10 or newer and check that it is available in your terminal.
+- **`No module named ...`:** Install the dependencies inside the project's virtual environment using the commands above.
+- **PowerShell blocks activation:** Use the direct `.venv\Scripts\python.exe` commands instead.
+- **`python3-venv` is missing on Linux:** Run `sudo apt install python3-venv`.
+- **Online lookups fail:** Check your connection, API-key configuration, provider availability, and rate limits.
+- **The application cannot find a file:** Check the path you entered and ensure the file exists.
+- **A command fails:** Confirm that you are in the `EyesOfTruth` project directory and that the installation completed successfully.
 
 ## Limitations
 
-Eyes of Truth is an educational security-screening tool, not a guarantee of safety.
+EyesOfTruth is an educational cybersecurity project.
 
-- Heuristic scores are estimates, not statistically validated probabilities.
-- A low risk score or absence of a threat-intelligence match does not prove that a URL or email is safe.
-- Domain information may be incomplete or unavailable.
-- The Terms Summarizer uses rule-based processing and sentence selection; it is not a semantic AI model or a substitute for legal advice.
-- Online providers may be unavailable, impose rate limits, or change their requirements.
-- Review findings independently before making security decisions.
+- Risk scores are estimates, not statistically validated probabilities.
+- A low-risk result does not prove an email or URL is safe.
+- Domain intelligence may be incomplete or unavailable.
+- The terms summarizer uses rule-based processing and is not a substitute for legal advice.
+- External providers may impose rate limits or change their requirements.
 
-## Privacy and responsible use
-
-Use Eyes of Truth only for lawful, authorized defensive analysis.
-
-Local analysis functions process their input on your device. Optional online lookups may transmit queried URLs or domain names to external providers. Review the relevant provider's privacy policy and the project's implementation before submitting sensitive information.
-
-Do not open suspicious links merely to test them, and never enter passwords or confidential information into untrusted websites.
-
-## Contributing
-
-Bug reports, reproducible test cases, documentation improvements, and defensive security enhancements are welcome.
-
-## License
-
-No license has been selected yet. Until a license is added, do not assume that others have permission to redistribute or modify this project.
+Use the tool for lawful, authorized defensive analysis. Review important findings independently.
