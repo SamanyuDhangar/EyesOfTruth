@@ -106,11 +106,9 @@ Copy-Item .env.example .env
 notepad .env
 ```
 
-Add the relevant API keys only if you intend to use their associated providers:
+Add the  API keys only if you intend to use their associated providers:
 
 - `URLHAUS_AUTH_KEY`
-- `PHISHTANK_API_KEY`
-- `GOOGLE_SAFE_BROWSING_API_KEY`
 
 Use the exact variable names already provided in `.env.example`. Follow each provider's current instructions for obtaining and using a key. Leave unused settings blank if supported by the provider implementation.
 
