@@ -1,0 +1,1059 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050b16">
+    <title>EyesOfTruth | Security Operations</title>
+
+    <style>
+        :root {
+            --bg: #050b16;
+            --panel: #0b1829;
+            --panel2: #0e2035;
+            --border: #1b3b58;
+            --cyan: #36cfff;
+            --text: #e8f2ff;
+            --muted: #91a8c2;
+            --green: #35e0ad;
+            --red: #ff6b7a;
+            --yellow: #ffcc70;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(ellipse at 80% 0%, #0d2940 0%, transparent 40%),
+                var(--bg);
+            color: var(--text);
+            font-family: Inter, system-ui, Arial, sans-serif;
+        }
+
+        button, input, textarea { font: inherit; }
+
+        button, a { -webkit-tap-highlight-color: transparent; }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        aside {
+            width: 245px;
+            flex-shrink: 0;
+            padding: 27px 17px;
+            background: #081321;
+            border-right: 1px solid var(--border);
+        }
+
+        .brand {
+            color: var(--cyan);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+            margin-bottom: 12px;
+        }
+
+        .brand-sub {
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 38px;
+        }
+
+        .nav-label {
+            color: #607c98;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin: 25px 12px 10px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 13px;
+            margin: 5px 0;
+            border-radius: 8px;
+            color: #b7c9df;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: #103253;
+            color: var(--cyan);
+        }
+
+        .side-note {
+            margin-top: 35px;
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        main {
+            flex: 1;
+            min-width: 0;
+            max-width: 1450px;
+            padding: 34px clamp(18px, 4vw, 48px);
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .status {
+            color: var(--green);
+            font-size: 12px;
+            letter-spacing: 1.2px;
+        }
+
+        .local-badge {
+            padding: 8px 12px;
+            border: 1px solid #1c4e54;
+            border-radius: 30px;
+            color: var(--green);
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: clamp(29px, 4vw, 43px);
+            letter-spacing: -1.4px;
+            margin: 12px 0;
+        }
+
+        h2 { letter-spacing: -.4px; }
+
+        .subtitle {
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 760px;
+        }
+
+        .section-heading {
+            margin-top: 42px;
+            margin-bottom: 16px;
+            color: #9db6d0;
+            font-size: 12px;
+            letter-spacing: 1.7px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 17px;
+        }
+
+        .card, .tool-panel {
+            background: linear-gradient(145deg, #0d1d31, #081321);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+        }
+
+        .card {
+            padding: 22px;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-3px);
+        }
+
+        .symbol {
+            display: inline-grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            background: #103253;
+            border-radius: 10px;
+            color: var(--cyan);
+            font-size: 25px;
+        }
+
+        .card h2 { font-size: 19px; }
+
+        .card p {
+            color: var(--muted);
+            line-height: 1.7;
+            min-height: 70px;
+            font-size: 13px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 7px;
+            padding: 12px 15px;
+            background: #087fbd;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        button:hover { background: #079edc; }
+
+        button:disabled {
+            opacity: .6;
+            cursor: wait;
+        }
+
+        .card button { width: 100%; }
+
+        .tool-panel {
+            padding: clamp(17px, 3vw, 27px);
+            margin-top: 18px;
+            scroll-margin-top: 20px;
+        }
+
+        .tool-panel h2 { margin-top: 0; }
+
+        .tool-intro {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 13px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .field { min-width: 0; }
+
+        .full { grid-column: 1 / -1; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #c5d8eb;
+            font-size: 13px;
+        }
+
+        input, textarea {
+            width: 100%;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #25425f;
+            border-radius: 7px;
+            background: #06111e;
+            color: var(--text);
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 2px #36cfff18;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        input[type="file"] { font-size: 12px; }
+
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 17px;
+        }
+
+        .secondary {
+            background: #172c42;
+            border: 1px solid #294763;
+        }
+
+        .secondary:hover { background: #223e59; }
+
+        .result {
+            display: none;
+            margin-top: 22px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #06111e;
+        }
+
+        .result.visible { display: block; }
+
+        .result h3 {
+            margin: 0 0 14px;
+            font-size: 16px;
+        }
+
+        .result h4 {
+            color: #b9d4ed;
+            margin: 18px 0 8px;
+            font-size: 13px;
+        }
+
+        .score-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 12px 0 18px;
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--cyan);
+        }
+
+        .risk {
+            border: 1px solid #31516d;
+            border-radius: 20px;
+            padding: 6px 11px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .risk.high, .risk.invalid {
+            color: var(--red);
+            border-color: #783946;
+        }
+
+        .risk.medium {
+            color: var(--yellow);
+            border-color: #705b35;
+        }
+
+        .risk.low {
+            color: var(--green);
+            border-color: #24614e;
+        }
+
+        .meter {
+            width: 100%;
+            height: 7px;
+            background: #18283a;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 0;
+            background: var(--cyan);
+            transition: width .4s;
+        }
+
+        .result-list {
+            padding-left: 20px;
+            margin: 8px 0;
+            color: #c1d1e1;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+            font-size: 13px;
+        }
+
+        .result-text {
+            color: #c1d1e1;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            font-size: 13px;
+        }
+
+        .notice {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        .footer {
+            color: #6e87a1;
+            font-size: 12px;
+            margin: 40px 0 10px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 760px) {
+            .layout { flex-direction: column; }
+
+            aside {
+                width: 100%;
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+                padding: 19px;
+            }
+
+            .brand { margin-bottom: 7px; }
+            .brand-sub { margin-bottom: 18px; }
+
+            .nav-label { margin-top: 14px; }
+
+            .nav-item {
+                display: inline-block;
+                padding: 10px;
+                margin-right: 3px;
+            }
+
+            .side-note { margin-top: 14px; }
+
+            main { padding: 24px 17px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full { grid-column: auto; }
+        }
+    </style>
+</head>
+
+<body>
+<div class="layout">
+    <aside>
+        <div class="brand">◉ EyesOfTruth</div>
+        <div class="brand-sub">CYBERSECURITY TOOLKIT</div>
+
+        <div class="nav-label">WORKSPACE</div>
+        <a class="nav-item active" href="#dashboard">⌂ Dashboard</a>
+        <a class="nav-item" href="#email">✉ Email Scanner</a>
+        <a class="nav-item" href="#url">⌁ Link Analyzer</a>
+        <a class="nav-item" href="#terms">▤ Terms Summarizer</a>
+        <a class="nav-item" href="#api-settings">⚙ API Settings</a>
+
+        <div class="side-note">
+            <strong style="color: var(--cyan)">LOCAL APPLICATION</strong>
+            <br>
+            Analysis runs through your local Python backend. Online
+            lookups may contact external services when supported.
+        </div>
+    </aside>
+
+    <main>
+        <header id="dashboard">
+            <div class="topbar">
+                <div class="status" id="system-status">● CHECKING BACKEND...</div>
+                <div class="local-badge">◉ LOCAL DASHBOARD</div>
+            </div>
+
+            <h1>Security Operations Center</h1>
+            <p class="subtitle">
+                Investigate suspicious emails, inspect links, and understand
+                terms and conditions with your EyesOfTruth analysis tools.
+            </p>
+        </header>
+
+        <div class="section-heading">AVAILABLE TOOLS</div>
+
+        <section class="cards">
+            <article class="card">
+                <div class="symbol">✉</div>
+                <h2>Email Scanner</h2>
+                <p>
+                    Inspect sender details, email content, and suspicious
+                    link patterns for potential phishing indicators.
+                </p>
+                <button type="button" data-jump="email">Open Scanner →</button>
+            </article>
+
+            <article class="card">
+                <div class="symbol">⌁</div>
+                <h2>Link Analyzer</h2>
+                <p>
+                    Examine URL structure, unusual patterns, and possible
+                    brand lookalikes using your local scanner.
+                </p>
+                <button type="button" data-jump="url">Open Analyzer →</button>
+            </article>
+
+            <article class="card">
+                <div class="symbol">▤</div>
+                <h2>Terms Summarizer</h2>
+                <p>
+                    Summarize supplied text, identify topics, and flag
+                    clauses that may deserve closer review.
+                </p>
+                <button type="button" data-jump="terms">Open Summarizer →</button>
+            </article>
+        </section>
+
+        <div class="section-heading">ANALYSIS WORKSPACE</div>
+
+        <section class="tool-panel" id="email">
+            <h2>✉ Email Phishing Scanner</h2>
+            <p class="tool-intro">
+                Enter email details or upload a saved .eml message.
+                Do not paste passwords, private account data, or confidential emails.
+            </p>
+
+            <form id="email-form">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="sender">Sender email or From header</label>
+                        <input id="sender" name="sender" maxlength="500"
+                               placeholder="security@example.com">
+                    </div>
+
+                    <div class="field">
+                        <label for="subject">Email subject</label>
+                        <input id="subject" name="subject" maxlength="1000"
+                               placeholder="Example: Verify your account">
+                    </div>
+
+                    <div class="field full">
+                        <label for="email-body">Email message text</label>
+                        <textarea id="email-body" name="body" maxlength="200000"
+                                  placeholder="Paste the email message here..."></textarea>
+                    </div>
+
+                    <div class="field full">
+                        <label for="html-body">Optional HTML email content</label>
+                        <textarea id="html-body" name="html_body" maxlength="200000"
+                                  placeholder="Optional: paste the original HTML email content if available"></textarea>
+                    </div>
+
+                    <div class="field full">
+                        <label for="eml-file">Or upload an email file (.eml, max 10 MB)</label>
+                        <input id="eml-file" type="file" accept=".eml,message/rfc822">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="email-submit" type="submit">Analyze Email</button>
+                    <button class="secondary" id="email-file-submit" type="button">
+                        Analyze .eml File
+                    </button>
+                    <button class="secondary" type="reset">Clear Fields</button>
+                </div>
+            </form>
+
+            <div class="result" id="email-result" aria-live="polite"></div>
+        </section>
+
+        <section class="tool-panel" id="url">
+            <h2>⌁ Link Analyzer</h2>
+            <p class="tool-intro">
+                Enter a URL to check it using your existing local analysis rules.
+                The scanner does not open the destination website.
+            </p>
+
+            <form id="url-form">
+                <div class="field">
+                    <label for="url-input">URL to analyze</label>
+                    <input id="url-input" type="text" maxlength="4096"
+                           placeholder="https://example.com" required>
+                </div>
+                <div class="form-actions">
+                    <button id="url-submit" type="submit">Analyze URL</button>
+                    <button class="secondary" type="reset">Clear</button>
+                </div>
+            </form>
+
+            <div class="result" id="url-result" aria-live="polite"></div>
+        </section>
+
+        <section class="tool-panel" id="terms">
+            <h2>▤ Terms and Conditions Summarizer</h2>
+            <p class="tool-intro">
+                Paste the text you want to review. This feature uses your
+                current summarization rules; it is not legal advice.
+            </p>
+
+            <form id="terms-form">
+                <div class="field">
+                    <label for="terms-input">Terms and conditions text</label>
+                    <textarea id="terms-input" maxlength="200000" required
+                              placeholder="Paste terms and conditions here..."></textarea>
+                </div>
+
+                <div class="field" style="margin-top: 15px; max-width: 220px;">
+                    <label for="sentence-count">Summary sentences</label>
+                    <input id="sentence-count" type="number" min="1" max="15" value="5">
+                </div>
+
+                <div class="form-actions">
+                    <button id="terms-submit" type="submit">Summarize Text</button>
+                    <button class="secondary" type="reset">Clear</button>
+                </div>
+            </form>
+
+            <div class="result" id="terms-result" aria-live="polite"></div>
+        </section>
+
+
+<section class="tool-panel" id="api-settings">
+    <h2>⚙ API Settings</h2>
+    <p class="tool-intro">
+        Online URL reputation checks use the URLhaus service configured
+        by the Eyes of Truth server administrator.
+    </p>
+
+    <div class="form-actions">
+        <button id="urlhaus-status" type="button">
+            Check URLhaus Status
+        </button>
+    </div>
+
+    <div
+        class="result"
+        id="urlhaus-settings-result"
+        aria-live="polite"
+    ></div>
+</section>
+
+
+        <div class="footer">
+            EYESOFTRUTH · LOCAL CYBERSECURITY ANALYSIS<br>
+            Risk scores are estimates based on available rules and data, not
+            guarantees that an email, link, or service is safe or malicious.
+        </div>
+    </main>
+</div>
+
+<script>
+    const $ = (id) => document.getElementById(id);
+
+    function addText(parent, tag, text, className = "") {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        element.textContent = String(text ?? "");
+        parent.appendChild(element);
+        return element;
+    }
+
+    function addList(parent, title, items) {
+        if (!Array.isArray(items) || items.length === 0) return;
+
+        addText(parent, "h4", title);
+        const list = document.createElement("ul");
+        list.className = "result-list";
+
+        items.forEach((item) => {
+            let text;
+
+            if (typeof item === "string") {
+                text = item;
+            } else if (item && typeof item === "object") {
+                text = Object.entries(item)
+                    .map(([key, value]) => `${key}: ${
+                        typeof value === "object"
+                            ? JSON.stringify(value)
+                            : String(value ?? "")
+                    }`)
+                    .join(" — ");
+            } else {
+                text = String(item);
+            }
+
+            addText(list, "li", text);
+        });
+
+        parent.appendChild(list);
+    }
+
+    function showError(targetId, message) {
+        const panel = $(targetId);
+        panel.replaceChildren();
+        panel.classList.add("visible");
+        addText(panel, "h3", "Analysis could not be completed");
+        addText(panel, "p", message, "result-text");
+    }
+
+    async function requestJSON(url, options) {
+        let response;
+
+        try {
+            response = await fetch(url, options);
+        } catch {
+            throw new Error(
+                "Could not connect to the local backend. Check that the EyesOfTruth server is running."
+            );
+        }
+
+        let data;
+
+        try {
+            data = await response.json();
+        } catch {
+            throw new Error("The backend returned an unreadable response.");
+        }
+
+        if (!response.ok) {
+            let message = data.detail || `Request failed (${response.status}).`;
+
+            if (Array.isArray(message)) {
+                message = message.map(item => item.msg || JSON.stringify(item)).join("; ");
+            }
+
+            throw new Error(String(message));
+        }
+
+        return data;
+    }
+
+    function showURLhausSettingsMessage(title, message) {
+        const panel = $("urlhaus-settings-result");
+        panel.replaceChildren();
+        panel.classList.add("visible");
+
+        addText(panel, "h3", title);
+        addText(panel, "p", message, "result-text");
+    }
+
+    async function loadURLhausStatus() {
+        try {
+            const data = await requestJSON("/api/settings/urlhaus");
+
+            if (data.configured) {
+                showURLhausSettingsMessage(
+                    "URLhaus Configured",
+"URLhaus is configured on the server. Online reputation checks may be available."
+                );
+            } else {
+                showURLhausSettingsMessage(
+                    "URLhaus Not Configured",
+"URLhaus is not configured on the server. Online reputation checks may be unavailable."
+                );
+            }
+        } catch (error) {
+            showURLhausSettingsMessage(
+                "Could Not Check Status",
+                error.message
+            );
+        }
+    }
+
+
+    function renderRiskResult(targetId, data, kind) {
+        const panel = $(targetId);
+        panel.replaceChildren();
+        panel.classList.add("visible");
+
+        addText(panel, "h3", "Analysis Results");
+
+        if (typeof data.score === "number") {
+            const row = document.createElement("div");
+            row.className = "score-row";
+
+            addText(row, "div", `${data.score}/100`, "score");
+
+            const level = String(data.level || "UNKNOWN");
+            const risk = addText(row, "span", level, "risk");
+            const lower = level.toLowerCase();
+
+            if (lower === "high") risk.classList.add("high");
+            else if (lower === "medium") risk.classList.add("medium");
+            else if (lower === "low") risk.classList.add("low");
+            else risk.classList.add("invalid");
+
+            panel.appendChild(row);
+
+            const meter = document.createElement("div");
+            meter.className = "meter";
+            const fill = document.createElement("div");
+            fill.className = "meter-fill";
+            fill.style.width = `${Math.max(0, Math.min(100, data.score))}%`;
+            meter.appendChild(fill);
+            panel.appendChild(meter);
+        } else if (data.message) {
+            addText(panel, "p", data.message, "result-text");
+        }
+
+        if (data.hostname) {
+            addText(panel, "p", `Hostname: ${data.hostname}`, "result-text");
+        }
+
+        if (data.sender_address) {
+            addText(panel, "p", `Sender: ${data.sender_address}`, "result-text");
+        }
+
+        if (data.sender_domain) {
+            addText(panel, "p", `Sender domain: ${data.sender_domain}`, "result-text");
+        }
+
+        if (data.subject) {
+            addText(panel, "p", `Subject: ${data.subject}`, "result-text");
+        }
+
+        if (data.checked_online === true) {
+            addText(panel, "p", "An online lookup was reported as available by the backend.", "notice");
+        }
+
+        addList(panel, "Findings and warnings", data.findings || data.warnings);
+        addList(panel, "Observations", data.observations);
+        addList(panel, "Links found in email", data.links);
+        addList(panel, "Summary", data.summary);
+        addList(panel, "Topics identified", data.topics);
+        addList(panel, "Clauses to review", data.risks);
+
+
+        if (data.brand_result) {
+            const brand = data.brand_result;
+            addText(panel, "h4", "Brand Intelligence");
+
+            let statusText = "Unverified domain";
+            let statusClass = "notice";
+
+            if (brand.status === "canonical_domain_match") {
+                statusText = "Listed domain match";
+            } else if (brand.status === "possible_lookalike") {
+                statusText = "Possible brand lookalike";
+                statusClass = "risk high";
+            } else if (brand.status === "invalid_domain") {
+                statusText = "Invalid or unrecognized domain";
+            }
+
+            addText(panel, "p", statusText, statusClass);
+
+            if (brand.brand) {
+                addText(panel, "p", `Brand identified: ${brand.brand}`, "result-text");
+            }
+
+            if (brand.matched_domain) {
+                addText(panel, "p", `Listed domain: ${brand.matched_domain}`, "result-text");
+            }
+
+            if (brand.similarity !== undefined) {
+                addText(
+                    panel,
+                    "p",
+                    `Name similarity: ${Math.round(brand.similarity * 100)}%`,
+                    "result-text"
+                );
+            }
+
+            addList(panel, "Brand warnings", brand.warnings);
+            addList(panel, "Brand observations", brand.observations);
+
+            addText(
+                panel,
+                "p",
+                "A listed domain match does not authenticate the sender or prove the email is safe.",
+                "notice"
+            );
+        }
+
+
+        if (data.domain_info) {
+            addText(panel, "h4", "Domain registration information");
+            addText(panel, "p", JSON.stringify(data.domain_info, null, 2), "result-text");
+        }
+
+        if (kind === "email" && data.links && data.links.length === 0) {
+            addText(panel, "p", "No links were extracted by the current email parser.", "notice");
+        }
+
+        addText(
+            panel,
+            "p",
+            "Automated results can miss threats or flag legitimate content. Review findings carefully.",
+            "notice"
+        );
+    }
+
+    function setBusy(buttonId, busy, busyText, normalText) {
+        const button = $(buttonId);
+        button.disabled = busy;
+        button.textContent = busy ? busyText : normalText;
+    }
+
+    async function runEmailScan(event) {
+        event.preventDefault();
+
+        const payload = {
+            sender: $("sender").value,
+            subject: $("subject").value,
+            body: $("email-body").value,
+            html_body: $("html-body").value
+        };
+
+        if (!Object.values(payload).some(value => value.trim())) {
+            showError("email-result", "Enter at least one email field before scanning.");
+            return;
+        }
+
+        setBusy("email-submit", true, "Analyzing...", "Analyze Email");
+
+        try {
+            const data = await requestJSON("/api/scan/email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            renderRiskResult("email-result", data, "email");
+        } catch (error) {
+            showError("email-result", error.message);
+        } finally {
+            setBusy("email-submit", false, "Analyzing...", "Analyze Email");
+        }
+    }
+
+    async function runEmailFileScan() {
+        const file = $("eml-file").files[0];
+
+        if (!file) {
+            showError("email-result", "Choose an .eml file first.");
+            return;
+        }
+
+        if (!file.name.toLowerCase().endsWith(".eml")) {
+            showError("email-result", "Please choose a file with the .eml extension.");
+            return;
+        }
+
+        if (file.size > 10 * 1024 * 1024) {
+            showError("email-result", "The file exceeds the 10 MB limit.");
+            return;
+        }
+
+        const form = new FormData();
+        form.append("file", file);
+
+        setBusy("email-file-submit", true, "Analyzing file...", "Analyze .eml File");
+
+        try {
+            const data = await requestJSON("/api/scan/email-file", {
+                method: "POST",
+                body: form
+            });
+
+            renderRiskResult("email-result", data, "email");
+        } catch (error) {
+            showError("email-result", error.message);
+        } finally {
+            setBusy("email-file-submit", false, "Analyzing file...", "Analyze .eml File");
+        }
+    }
+
+    async function runURLScan(event) {
+        event.preventDefault();
+
+        const url = $("url-input").value.trim();
+
+        if (!url) {
+            showError("url-result", "Enter a URL first.");
+            return;
+        }
+
+        setBusy("url-submit", true, "Analyzing...", "Analyze URL");
+
+        try {
+            const data = await requestJSON("/api/scan/url", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url })
+            });
+
+            renderRiskResult("url-result", data, "url");
+        } catch (error) {
+            showError("url-result", error.message);
+        } finally {
+            setBusy("url-submit", false, "Analyzing...", "Analyze URL");
+        }
+    }
+
+    async function runTermsScan(event) {
+        event.preventDefault();
+
+        const text = $("terms-input").value.trim();
+        const maxSentences = Number($("sentence-count").value);
+
+        if (!text) {
+            showError("terms-result", "Paste terms and conditions text first.");
+            return;
+        }
+
+        if (!Number.isInteger(maxSentences) || maxSentences < 1 || maxSentences > 15) {
+            showError("terms-result", "Choose between 1 and 15 summary sentences.");
+            return;
+        }
+
+        setBusy("terms-submit", true, "Summarizing...", "Summarize Text");
+
+        try {
+            const data = await requestJSON("/api/scan/terms", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    text,
+                    max_sentences: maxSentences
+                })
+            });
+
+            renderRiskResult("terms-result", data, "terms");
+        } catch (error) {
+            showError("terms-result", error.message);
+        } finally {
+            setBusy("terms-submit", false, "Summarizing...", "Summarize Text");
+        }
+    }
+
+    $("email-form").addEventListener("submit", runEmailScan);
+    $("email-file-submit").addEventListener("click", runEmailFileScan);
+    $("url-form").addEventListener("submit", runURLScan);
+    $("terms-form").addEventListener("submit", runTermsScan);
+    $("urlhaus-status").addEventListener("click", loadURLhausStatus);
+
+    document.querySelectorAll("[data-jump]").forEach(button => {
+        button.addEventListener("click", () => {
+            const target = $(button.dataset.jump);
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            target.querySelector("input, textarea")?.focus({ preventScroll: true });
+        });
+    });
+
+    document.querySelectorAll(".nav-item").forEach(link => {
+        link.addEventListener("click", () => {
+            document.querySelectorAll(".nav-item").forEach(item => {
+                item.classList.remove("active");
+            });
+            link.classList.add("active");
+        });
+    });
+
+    $("email-form").addEventListener("reset", () => {
+        setTimeout(() => {
+            $("email-result").classList.remove("visible");
+            $("email-result").replaceChildren();
+        }, 0);
+    });
+
+    $("url-form").addEventListener("reset", () => {
+        setTimeout(() => {
+            $("url-result").classList.remove("visible");
+            $("url-result").replaceChildren();
+        }, 0);
+    });
+
+    $("terms-form").addEventListener("reset", () => {
+        setTimeout(() => {
+            $("terms-result").classList.remove("visible");
+            $("terms-result").replaceChildren();
+        }, 0);
+    });
+
+    async function checkBackend() {
+        try {
+            const data = await requestJSON("/api/health");
+            $("system-status").textContent =
+                data.status === "online"
+                    ? "● BACKEND ONLINE"
+                    : "● BACKEND STATUS UNKNOWN";
+        } catch {
+            $("system-status").textContent = "● BACKEND CONNECTION ERROR";
+            $("system-status").style.color = "var(--red)";
+        }
+    }
+
+    checkBackend();
+</script>
+</body>
+</html>

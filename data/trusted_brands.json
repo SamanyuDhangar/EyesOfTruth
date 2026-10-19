@@ -1,0 +1,706 @@
+{
+  "version": 1,
+  "description": "Canonical company domains for brand identification. A domain match alone does not prove an email is safe. Sending domains and authentication must be verified separately.",
+  "brands": [
+    {
+      "name": "Google",
+      "domains": [
+        "google.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Microsoft",
+      "domains": [
+        "microsoft.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "OpenAI",
+      "domains": [
+        "openai.com"
+      ],
+      "category": "AI"
+    },
+    {
+      "name": "Apple",
+      "domains": [
+        "apple.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Amazon",
+      "domains": [
+        "amazon.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "Meta",
+      "domains": [
+        "meta.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Facebook",
+      "domains": [
+        "facebook.com"
+      ],
+      "category": "Social"
+    },
+    {
+      "name": "Instagram",
+      "domains": [
+        "instagram.com"
+      ],
+      "category": "Social"
+    },
+    {
+      "name": "WhatsApp",
+      "domains": [
+        "whatsapp.com"
+      ],
+      "category": "Communication"
+    },
+    {
+      "name": "YouTube",
+      "domains": [
+        "youtube.com"
+      ],
+      "category": "Media"
+    },
+    {
+      "name": "LinkedIn",
+      "domains": [
+        "linkedin.com"
+      ],
+      "category": "Careers"
+    },
+    {
+      "name": "GitHub",
+      "domains": [
+        "github.com"
+      ],
+      "category": "Developer Tools"
+    },
+    {
+      "name": "GitLab",
+      "domains": [
+        "gitlab.com"
+      ],
+      "category": "Developer Tools"
+    },
+    {
+      "name": "Cisco",
+      "domains": [
+        "cisco.com"
+      ],
+      "category": "Networking"
+    },
+    {
+      "name": "Cloudflare",
+      "domains": [
+        "cloudflare.com"
+      ],
+      "category": "Cybersecurity"
+    },
+    {
+      "name": "IBM",
+      "domains": [
+        "ibm.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Oracle",
+      "domains": [
+        "oracle.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Adobe",
+      "domains": [
+        "adobe.com"
+      ],
+      "category": "Software"
+    },
+    {
+      "name": "NVIDIA",
+      "domains": [
+        "nvidia.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Intel",
+      "domains": [
+        "intel.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "AMD",
+      "domains": [
+        "amd.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Dell",
+      "domains": [
+        "dell.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "HP",
+      "domains": [
+        "hp.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Lenovo",
+      "domains": [
+        "lenovo.com"
+      ],
+      "category": "Technology"
+    },
+    {
+      "name": "Samsung",
+      "domains": [
+        "samsung.com"
+      ],
+      "category": "Electronics"
+    },
+    {
+      "name": "Sony",
+      "domains": [
+        "sony.com"
+      ],
+      "category": "Electronics"
+    },
+    {
+      "name": "Netflix",
+      "domains": [
+        "netflix.com"
+      ],
+      "category": "Entertainment"
+    },
+    {
+      "name": "Spotify",
+      "domains": [
+        "spotify.com"
+      ],
+      "category": "Entertainment"
+    },
+    {
+      "name": "Disney",
+      "domains": [
+        "disney.com"
+      ],
+      "category": "Entertainment"
+    },
+    {
+      "name": "Steam",
+      "domains": [
+        "steampowered.com"
+      ],
+      "category": "Gaming"
+    },
+    {
+      "name": "Epic Games",
+      "domains": [
+        "epicgames.com"
+      ],
+      "category": "Gaming"
+    },
+    {
+      "name": "Discord",
+      "domains": [
+        "discord.com"
+      ],
+      "category": "Communication"
+    },
+    {
+      "name": "Zoom",
+      "domains": [
+        "zoom.us"
+      ],
+      "category": "Communication"
+    },
+    {
+      "name": "Slack",
+      "domains": [
+        "slack.com"
+      ],
+      "category": "Communication"
+    },
+    {
+      "name": "Dropbox",
+      "domains": [
+        "dropbox.com"
+      ],
+      "category": "Cloud Storage"
+    },
+    {
+      "name": "Box",
+      "domains": [
+        "box.com"
+      ],
+      "category": "Cloud Storage"
+    },
+    {
+      "name": "Salesforce",
+      "domains": [
+        "salesforce.com"
+      ],
+      "category": "Business Software"
+    },
+    {
+      "name": "Shopify",
+      "domains": [
+        "shopify.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "PayPal",
+      "domains": [
+        "paypal.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "Visa",
+      "domains": [
+        "visa.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "Mastercard",
+      "domains": [
+        "mastercard.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "American Express",
+      "domains": [
+        "americanexpress.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "Stripe",
+      "domains": [
+        "stripe.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "Wise",
+      "domains": [
+        "wise.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "Payoneer",
+      "domains": [
+        "payoneer.com"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "SBI",
+      "domains": [
+        "sbi.co.in"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "HDFC Bank",
+      "domains": [
+        "hdfcbank.com"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "ICICI Bank",
+      "domains": [
+        "icicibank.com"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Axis Bank",
+      "domains": [
+        "axisbank.com"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Kotak Mahindra Bank",
+      "domains": [
+        "kotak.com"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Punjab National Bank",
+      "domains": [
+        "pnbindia.in"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Bank of Baroda",
+      "domains": [
+        "bankofbaroda.in"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Canara Bank",
+      "domains": [
+        "canarabank.com"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "IDFC FIRST Bank",
+      "domains": [
+        "idfcfirstbank.com"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Indian Bank",
+      "domains": [
+        "indianbank.in"
+      ],
+      "category": "Banking"
+    },
+    {
+      "name": "Flipkart",
+      "domains": [
+        "flipkart.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "Myntra",
+      "domains": [
+        "myntra.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "Meesho",
+      "domains": [
+        "meesho.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "AJIO",
+      "domains": [
+        "ajio.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "Tata CLiQ",
+      "domains": [
+        "tatacliq.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "Jio",
+      "domains": [
+        "jio.com"
+      ],
+      "category": "Telecom"
+    },
+    {
+      "name": "Airtel",
+      "domains": [
+        "airtel.in"
+      ],
+      "category": "Telecom"
+    },
+    {
+      "name": "Vi",
+      "domains": [
+        "myvi.in"
+      ],
+      "category": "Telecom"
+    },
+    {
+      "name": "BSNL",
+      "domains": [
+        "bsnl.co.in"
+      ],
+      "category": "Telecom"
+    },
+    {
+      "name": "IRCTC",
+      "domains": [
+        "irctc.co.in"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "IndiGo",
+      "domains": [
+        "goindigo.in"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "Air India",
+      "domains": [
+        "airindia.com"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "Uber",
+      "domains": [
+        "uber.com"
+      ],
+      "category": "Transport"
+    },
+    {
+      "name": "Ola",
+      "domains": [
+        "olacabs.com"
+      ],
+      "category": "Transport"
+    },
+    {
+      "name": "Rapido",
+      "domains": [
+        "rapido.bike"
+      ],
+      "category": "Transport"
+    },
+    {
+      "name": "Zomato",
+      "domains": [
+        "zomato.com"
+      ],
+      "category": "Food Delivery"
+    },
+    {
+      "name": "Swiggy",
+      "domains": [
+        "swiggy.com"
+      ],
+      "category": "Food Delivery"
+    },
+    {
+      "name": "Blinkit",
+      "domains": [
+        "blinkit.com"
+      ],
+      "category": "Delivery"
+    },
+    {
+      "name": "Zepto",
+      "domains": [
+        "zepto.com"
+      ],
+      "category": "Delivery"
+    },
+    {
+      "name": "BigBasket",
+      "domains": [
+        "bigbasket.com"
+      ],
+      "category": "Groceries"
+    },
+    {
+      "name": "JioMart",
+      "domains": [
+        "jiomart.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "Tata Neu",
+      "domains": [
+        "tataneu.com"
+      ],
+      "category": "Shopping"
+    },
+    {
+      "name": "BookMyShow",
+      "domains": [
+        "bookmyshow.com"
+      ],
+      "category": "Entertainment"
+    },
+    {
+      "name": "MakeMyTrip",
+      "domains": [
+        "makemytrip.com"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "EaseMyTrip",
+      "domains": [
+        "easemytrip.com"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "Yatra",
+      "domains": [
+        "yatra.com"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "Coursera",
+      "domains": [
+        "coursera.org"
+      ],
+      "category": "Education"
+    },
+    {
+      "name": "Udemy",
+      "domains": [
+        "udemy.com"
+      ],
+      "category": "Education"
+    },
+    {
+      "name": "Khan Academy",
+      "domains": [
+        "khanacademy.org"
+      ],
+      "category": "Education"
+    },
+    {
+      "name": "edX",
+      "domains": [
+        "edx.org"
+      ],
+      "category": "Education"
+    },
+    {
+      "name": "HackerRank",
+      "domains": [
+        "hackerrank.com"
+      ],
+      "category": "Careers"
+    },
+    {
+      "name": "LeetCode",
+      "domains": [
+        "leetcode.com"
+      ],
+      "category": "Education"
+    },
+    {
+      "name": "TryHackMe",
+      "domains": [
+        "tryhackme.com"
+      ],
+      "category": "Cybersecurity Education"
+    },
+    {
+      "name": "Hack The Box",
+      "domains": [
+        "hackthebox.com"
+      ],
+      "category": "Cybersecurity Education"
+    },
+    {
+      "name": "Atlassian",
+      "domains": [
+        "atlassian.com"
+      ],
+      "category": "Business Software"
+    },
+    {
+      "name": "Notion",
+      "domains": [
+        "notion.so"
+      ],
+      "category": "Productivity"
+    },
+    {
+      "name": "Canva",
+      "domains": [
+        "canva.com"
+      ],
+      "category": "Design"
+    },
+    {
+      "name": "Figma",
+      "domains": [
+        "figma.com"
+      ],
+      "category": "Design"
+    },
+    {
+      "name": "Grammarly",
+      "domains": [
+        "grammarly.com"
+      ],
+      "category": "Software"
+    },
+    {
+      "name": "Proton",
+      "domains": [
+        "proton.me"
+      ],
+      "category": "Privacy"
+    },
+    {
+      "name": "DuckDuckGo",
+      "domains": [
+        "duckduckgo.com"
+      ],
+      "category": "Privacy"
+    },
+    {
+      "name": "Mozilla",
+      "domains": [
+        "mozilla.org"
+      ],
+      "category": "Software"
+    },
+    {
+      "name": "Booking.com",
+      "domains": [
+        "booking.com"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "Airbnb",
+      "domains": [
+        "airbnb.com"
+      ],
+      "category": "Travel"
+    },
+    {
+      "name": "DHL",
+      "domains": [
+        "dhl.com"
+      ],
+      "category": "Delivery"
+    }
+  ]
+}

@@ -16,8 +16,11 @@ class URLhausProvider(ThreatProvider):
     name = "URLhaus"
     endpoint = "https://urlhaus-api.abuse.ch/v1/url/"
 
-    def __init__(self):
-        self.auth_key = os.getenv("URLHAUS_AUTH_KEY", "").strip()
+    def __init__(self, auth_key=None):
+        self.auth_key = (
+        auth_key if auth_key is not None
+        else os.getenv("URLHAUS_AUTH_KEY", "")
+    ).strip()
 
     def check_url(self, url):
         if not self.auth_key:

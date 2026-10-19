@@ -1,4 +1,5 @@
 
+
 import re
 from email import policy
 from email.parser import BytesParser
@@ -7,6 +8,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 from providers.domain_intel import check_brand_similarity, get_registration_info
+from core.brand_intel import analyze_brand_domain
 
 class EmailLinkParser(HTMLParser):
     """Extract clickable links from HTML without opening them."""
@@ -142,18 +144,25 @@ def analyze_email(sender, subject, body, html_body=""):
     if sender_address and sender_domain:
         observations.append(f"Sender domain: {sender_domain}")
 
-        # Check for potential brand impersonation.
+
+        # Identify known brands and possible lookalike domains.
         try:
-            brand_result = check_brand_similarity(sender_domain)
+            brand_result = analyze_brand_domain(sender_domain)
 
             for warning in brand_result.get("warnings", []):
-                warnings.append(warning)
-                score += 20
+                if warning not in warnings:
+                    warnings.append(warning)
+                    score += 20
+
+            for observation in brand_result.get("observations", []):
+                if observation not in observations:
+                    observations.append(observation)
 
         except Exception:
             observations.append(
-                "Brand similarity check could not be completed."
+                "Brand intelligence check could not be completed."
             )
+
 
         # Check public registration data for recently registered domains.
         # This is an online lookup; failure must not stop local analysis.
@@ -228,6 +237,7 @@ def analyze_email(sender, subject, body, html_body=""):
 
     links = []
     seen = set()
+    link_mismatch_found = False
 
     # Links embedded in HTML, including hidden destinations.
     for item in html_parser.links:
@@ -260,10 +270,16 @@ def analyze_email(sender, subject, body, html_body=""):
             and destination_domain
             and visible_domain != destination_domain
         ):
-            warnings.append(
+            warning = (
                 "A clickable link's displayed domain differs from its destination."
             )
-            score += 25
+
+            if warning not in warnings:
+                warnings.append(warning)
+
+            if not link_mismatch_found:
+                score += 10
+                link_mismatch_found = True
 
     # URLs written directly in the message body.
     for url in extract_text_urls(body or ""):

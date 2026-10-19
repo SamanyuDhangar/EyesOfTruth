@@ -1,2 +1,5 @@
 python-dotenv
 tldextract
+fastapi
+uvicorn
+python-multipart

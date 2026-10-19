@@ -25,3 +25,11 @@ __pycache__/
 
 # Exclude backup files
 *backup*
+
+.env
+# Local backups — never publish
+*.before-brand-intel
+*.pre-brand-integration
+*.backup
+*.bak
+*.task*-backup*
